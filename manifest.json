@@ -13,7 +13,7 @@
                 "changelog": "Fork by Eylexander - Adds Random Unwatched mode for showing random unwatched items from your library",
                 "targetAbi": "10.11.0.0",
                 "sourceUrl": "https://github.com/Eylexander/jellyfin-editors-choice-plugin/releases/download/1.4.3/EditorsChoicePlugin.v1.4.3.zip",
-                "checksum": "8351fbf0302bac1a23e94c6d7cec6c74",
+                "checksum": "76cdb2bad9582d23c1f6f4d868218d6c",
                 "timestamp": "2025-12-09 00:00:00"
             }
         ]
