@@ -300,6 +300,25 @@ public class EditorsChoiceActivityController : ControllerBase
                 result = PrepareResult(query, activeUser);
             }
 
+            // If showing random unwatched media, collect a random selection of unwatched items from the entire library
+            if (_config.Mode == "RANDOMWATCHED")
+            {
+
+                // Get all shows and movies that are unwatched
+                query = new InternalItemsQuery(activeUser)
+                {
+                    IncludeItemTypes = [BaseItemKind.Series, BaseItemKind.Movie],
+                    MinCommunityRating = minimumRating,
+                    MinCriticRating = minimumCriticRating,
+                    MaxParentalRating = parentalRatingScore,
+                    HasParentalRating = mustHaveParentRating,
+                    OrderBy = new[] { (ItemSortBy.Random, SortOrder.Ascending) },
+                    IsPlayed = false  // Force unwatched only
+                };
+                query.Limit = _config.RandomMediaCount * 2;
+                result = PrepareResult(query, activeUser);
+            }
+
             // Build response
             response = new Dictionary<string, object>();
             items = new List<object>();
